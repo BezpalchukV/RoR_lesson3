@@ -1,0 +1,20 @@
+# PostgreSQL. Versions 8.2 and up are supported.
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: RoR_lesson3_development
+
+test:
+  <<: *default
+  database: RoR_lesson3_test
+
+production:
+  <<: *default
+  database: RoR_lesson3_production
+  username: RoR_lesson3
+  password: <%= ENV['ROR_LESSON3_DATABASE_PASSWORD'] %>
