@@ -15,5 +15,11 @@
   <%= @post.tags %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<p>
+  <strong>Create by:</strong>
+   <%= @post.user.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_path(@post) if @post.user.eql?(current_user) %> |
 <%= link_to 'Back', posts_path %>

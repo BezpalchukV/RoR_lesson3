@@ -14,17 +14,25 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    if current_user
+      @post = Post.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /posts/1/edit
   def edit
+    unless @post.user.eql?(current_user)
+      redirect_to root_path
+    end
   end
 
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user if current_user
 
     respond_to do |format|
       if @post.save
@@ -54,10 +62,14 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
+    if @post.user.eql?(current_user)
+      @post.destroy
+      respond_to do |format|
+        format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to root_path
     end
   end
 
