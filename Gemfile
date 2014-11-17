@@ -28,6 +28,9 @@ gem 'rails_12factor',            group: :production
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'sprockets-rails', '>=2.1.4'
+gem 'bootstrap-sass', '~> 3.1.1.1'
+gem 'slim'
 # Use unicorn as the app server
 # gem 'unicorn'
 

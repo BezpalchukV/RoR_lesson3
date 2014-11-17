@@ -1,0 +1,101 @@
+@import "bootstrap";
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+h2, .h2 {
+  font-size: 25px;
+}
+h1, .h1 {
+  text-align: center;
+}
+.navbar {
+  min-height: 30px;
+}
+.navbar-inverse {
+  background-color: #A2C4F2;
+  border-color: #A2C4F2;
+}
+.nav-pills > li > a:hover {
+  background-color: #287AED;
+}
+.navbar-text.navbar-right:last-child {
+  max-height: 20px;
+  margin: 10px 15px 0px 0px;
+  color: #474343;
+}
+
+.btn-default {
+  background-color: #DDDBDB;
+}
+.blog-title {
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 60px;
+  font-weight: normal;
+}
+.row {
+  margin-left: 50px;
+}
+.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 30px;
+}
+.blog-post-meta {
+  margin-top: 10px;
+  color: #337ab7;
+}
+
+.btn-primary.post {
+  margin-top: 15px;
+  color: white;
+  background-color: #07ca50;
+  border-color: #61ca81;
+}
+.label-tags {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 90%;
+  color: #000000;
+}
+.banner {
+  text-align: center;
+}

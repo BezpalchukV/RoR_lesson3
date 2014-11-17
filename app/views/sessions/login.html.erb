@@ -1,20 +1,23 @@
 <body>
+
 <h1>Login</h1>
-<div class="box _login">
-    <%= form_tag('/sessions', method: :post) do %>
-      <div class="boxBody">
+
+<div class="container">
+
+    <%= form_tag('/sessions', method: :post, :class => 'form-signin', :role => 'form') do %>
         <div class="field">
-          <%= label_tag :email %>
-          <%= email_field_tag :email %>
+          <%= label_tag :email, nil, {:class => 'sr-only', :for => 'inputEmail'} %>
+          <%= email_field_tag :email, nil, {:class => 'form-control', :id => 'inputEmail', :placeholder => 'Email address'} %>
         </div>
         <div class="field">
-          <%= label_tag :password %>
-          <%= password_field_tag :password %>
+          <%= label_tag :password, nil, {:class => 'sr-only', :for => 'inputPassword'} %>
+          <%= password_field_tag :password, nil, {:class => 'form-control', :id => 'inputPassword', :placeholder => 'Password'} %>
         </div>
-      </div>
-        <div class="actions" id="btnLogin">
-          <%= submit_tag 'Login' %>
+        <div class="actions">
+          <%= submit_tag 'Login', :class => 'btn btn-lg btn-primary btn-block'%>
         </div>
     <% end %>
-    </div>
+
+</div>
+
 </body>
