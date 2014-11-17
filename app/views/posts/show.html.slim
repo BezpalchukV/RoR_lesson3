@@ -1,0 +1,33 @@
+div.container
+  div.row
+   div class = "col-sm-8 blog-main"
+     div.blog-post
+       p id="notice" role="alert"
+         = notice
+       p
+         strong
+          | Title:
+          h2 class="blog-post-title"
+             = @post.title
+
+       p
+         strong
+          | Body:
+         br
+         = @post.body
+
+       p
+         strong
+          | Tags:
+         br
+         = @post.tags
+
+       p.blog-post-meta
+         strong
+          | Created by:
+          = @post.user.name
+
+     - if @post.user.eql?(current_user)
+        = link_to 'Edit', edit_post_path(@post), :class => 'btn btn-default btn-sm'
+
+     = link_to 'Back', posts_path, :class => 'btn btn-default btn-sm'

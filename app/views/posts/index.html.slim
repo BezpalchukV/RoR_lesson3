@@ -1,0 +1,28 @@
+body
+  div.container
+    div.blog-header
+      h1.blog-title
+       | Listing posts
+
+    div.row
+      div class="col-sm-8 blog-main"
+      - @posts.each do |post|
+        div.blog-post
+          h2.blog-post-title
+            = post.title
+          p.blog-post-meta>
+            | Author:
+            = post.user.name
+          p
+            = post.body
+          p class="label label-tags"
+            = post.tags
+
+          = link_to 'Show', post, :class => 'btn btn-primary'
+          - if post.user.eql?(current_user)
+            = link_to 'Edit', edit_post_path(post), :class => 'btn btn-primary'
+            = link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary'
+
+      = link_to 'New Post', (new_post_path if current_user), :class => 'btn btn-primary post'
+
+      br
