@@ -6,15 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-<%= link_to 'Main page', root_path %>
-<%= link_to 'Registration', registration_path unless current_user %>
-<%= link_to 'Login', sessions_login_path unless current_user %>
-<%= link_to 'Logout', sessions_logout_path if current_user %>
+     <%= render 'layouts/header' %>
+     <% if (cookies_counter%10 == 0) %>
+        <div class="banner" ><embed src="<%= asset_path("banner.swf") %>" width ="728" height="90"/></div>>
+     <% end %>
 
-<%= current_user.name if current_user%>
-
-<%= yield %>
+     <%= yield %>
 
 </body>
 </html>

@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-  helper_method :current_user
 
+  def authenticate
+    redirect_to root_path unless current_user || controller_name == 'sessions'
+  end
+
+  def cookies_counter
+    cookies[:views] = (cookies[:views].present? && current_user) ? (cookies[:views].to_i + 1) : 1
+  end
+
+  helper_method :current_user, :authenticate, :cookies_counter
 end
