@@ -1,31 +1,35 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :post_user, only: [:edit, :update, :destroy]
+  before_action :authenticate, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    respond_to do |format|
+      format.json {render json: @posts, except: [:updated_at, :user_id], :include => {:user => {:only => :name}}}
+      format.html
+    end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @posts = Post.all
+    respond_to do |format|
+      format.json {render json: @post, except: [:updated_at, :user_id], :include => {:user => {:only => :name}}}
+      format.html
+    end
   end
 
   # GET /posts/new
   def new
-    if current_user
-      @post = Post.new
-    else
-      redirect_to root_path
-    end
+    @post = Post.new
   end
 
   # GET /posts/1/edit
   def edit
-    unless @post.user.eql?(current_user)
-      redirect_to root_path
-    end
   end
 
   # POST /posts
@@ -62,14 +66,10 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    if @post.user.eql?(current_user)
-      @post.destroy
-      respond_to do |format|
-        format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    else
-      redirect_to root_path
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 
@@ -83,4 +83,11 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :tags)
     end
+
+   def post_user
+     if current_user != @post.user
+      redirect_to post_path
+     end
+   end
+
 end
