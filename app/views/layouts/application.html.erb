@@ -10,7 +10,7 @@
 <body>
      <%= render 'layouts/header' %>
      <% if (cookies_counter%10 == 0) %>
-        <div class="banner" ><embed src="<%= asset_path("banner.swf") %>" width ="728" height="90"/></div>>
+        <div class="banner" ><embed src="<%= asset_path("banner.swf") %>" width ="728" height="90"/></div>
      <% end %>
 
      <%= yield %>
