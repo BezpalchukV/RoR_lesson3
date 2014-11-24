@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :posts
-  validates_presence_of :password_digest,
+  validates_presence_of :password_digest
   validates :name, :email,
             presence: true,
             uniqueness: true

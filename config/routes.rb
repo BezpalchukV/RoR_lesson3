@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
+  #resources :comments
+
   get 'sessions/login'
 
   get 'sessions/logout'
 
   post 'sessions' => 'sessions#create'
 
-  resources :posts
+  resources :posts do
+    resources :comments, :only => [:create]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
