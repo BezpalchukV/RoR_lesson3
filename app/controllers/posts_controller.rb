@@ -83,11 +83,11 @@ class PostsController < ApplicationController
     rate_value = params[:value] == 'like' ? 1 : -1
     if  check_for_vote?
       @votes = PostVotes.create(user_id: current_user.id, post_id: @post.id, value: rate_value)
-      flash[:notice] = "You rated #{current_user.name} post: #{params[:value]}"
+      flash[:notice] = "You rated #{@post.user.name} post: #{params[:value]}"
       if @votes.save
-        redirect_to :back
         @post.rating += rate_value
         @post.save
+        redirect_to :back
       end
     else
       flash[:notice] = 'You already rated this post'

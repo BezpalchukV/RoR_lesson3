@@ -1,9 +1,9 @@
 <div class="media">
-  <div class="pull-left">
-    <%= image_tag avatar_url(@post.user), height: '64', width: '64' , class: 'media-object'%>
-  </div>
   <div id="comments" class="media-body">
     <%= div_for comment do %>
+        <div class="pull-left">
+          <%= image_tag avatar_url(comment.user), height: '64', width: '64' , class: 'media-object'%>
+        </div>
         <p>
           <strong>
             Posted by: <%= comment.user.name %>
