@@ -8,12 +8,16 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    redirect_to root_path unless current_user || controller_name == 'sessions'
+    redirect_to :back unless current_user || controller_name == 'sessions'
   end
 
   def cookies_counter
     cookies[:views] = (cookies[:views].present? && current_user) ? (cookies[:views].to_i + 1) : 1
   end
 
-  helper_method :current_user, :authenticate, :cookies_counter
+  def get_likes(post, value)
+    PostVotes.where(post_id: post.id, value: value).size
+  end
+
+  helper_method :current_user, :authenticate, :cookies_counter, :get_likes
 end

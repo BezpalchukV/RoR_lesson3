@@ -42,4 +42,5 @@ require 'digest/md5'
 # gem 'debugger', group: [:development, :test]
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'annotate'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

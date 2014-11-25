@@ -1,13 +1,15 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
   before_action :post_user, only: [:edit, :update, :destroy]
-  before_action :authenticate, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate, only: [:new, :edit, :create, :update, :destroy, :vote]
 
   # GET /posts
   # GET /posts.json
   def index
     if params[:sort] == 'active'
       @posts = Post.active_posts
+    elsif params[:sort] == 'popular'
+      @posts = Post.popular
     else
       @posts = Post.all
     end
@@ -77,6 +79,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def vote
+    rate_value = params[:value] == 'like' ? 1 : -1
+    if  check_for_vote?
+      @votes = PostVotes.create(user_id: current_user.id, post_id: @post.id, value: rate_value)
+      flash[:notice] = "You rated #{current_user.name} post: #{params[:value]}"
+      if @votes.save
+        redirect_to :back
+        @post.rating += rate_value
+        @post.save
+      end
+    else
+      flash[:notice] = 'You already rated this post'
+      redirect_to :back
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -93,5 +111,10 @@ class PostsController < ApplicationController
       redirect_to post_path
      end
    end
+
+  def check_for_vote?
+    @rated_by = PostVotes.where(user_id: current_user.id, post_id: params[:id])
+    @rated_by.blank? && current_user != @post.user
+  end
 
 end

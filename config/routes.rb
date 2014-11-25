@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  #resources :comments
-
   get 'sessions/login'
 
   get 'sessions/logout'
@@ -10,6 +8,12 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, :only => [:create]
+  end
+
+  resources :posts do
+    member do
+      put "vote", to: "posts#vote"
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
