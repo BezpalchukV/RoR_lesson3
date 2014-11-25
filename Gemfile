@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'sprockets-rails', '>=2.1.4'
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'slim'
+require 'digest/md5'
 # Use unicorn as the app server
 # gem 'unicorn'
 

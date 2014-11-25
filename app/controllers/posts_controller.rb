@@ -6,7 +6,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if params[:sort] == 'active'
+      @posts = Post.active_posts
+    else
+      @posts = Post.all
+    end
     respond_to do |format|
       format.json {render json: @posts, except: [:updated_at, :user_id], :include => {:user => {:only => :name}}}
       format.html
@@ -16,7 +20,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @posts = Post.all
+    @posts = Post.recent
     respond_to do |format|
       format.json {render json: @post, except: [:updated_at, :user_id], :include => {:user => {:only => :name}}}
       format.html
