@@ -1,9 +1,17 @@
-<%= div_for comment do %>
-    <p>
-      <strong>
-        Posted by: <%= comment.user.name %>  <%= time_ago_in_words(comment.created_at) %> ago
-      </strong>
-      <br/>
-      <%= comment.body %>
-    </p>
-<% end %>
+<div class="media">
+  <div class="pull-left">
+    <%= image_tag avatar_url(@post.user), height: '64', width: '64' , class: 'media-object'%>
+  </div>
+  <div id="comments" class="media-body">
+    <%= div_for comment do %>
+        <p>
+          <strong>
+            Posted by: <%= comment.user.name %>
+          </strong>
+          <%= time_ago_in_words(comment.created_at) %> ago
+          <br/>
+          <%= comment.body %>
+        </p>
+    <% end %>
+  </div>
+</div>

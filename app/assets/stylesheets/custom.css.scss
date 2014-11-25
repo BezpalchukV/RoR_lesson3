@@ -78,6 +78,11 @@ h1, .h1 {
   margin-bottom: 5px;
   font-size: 30px;
 }
+.blog-post-title > a:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
 .blog-post-meta {
   margin-top: 10px;
   color: #337ab7;
@@ -108,4 +113,13 @@ textarea.form-control {
   width: 76px;
   margin-top: 14px;
   margin-left: 20px;
+}
+
+.btn.rate {
+  padding: 3px 6px;
+  font-size: 12px;
+}
+
+.rates {
+  float: right;
 }

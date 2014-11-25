@@ -7,16 +7,17 @@
 <div class="row">
   <div class="col-sm-8 blog-main">
     <%= link_to 'Active posts', posts_path(sort: 'active'), :class => 'btn btn-primary post' %>
-    <%= link_to 'Popular posts', posts_path(sort: 'active'), :class => 'btn btn-primary post' %>
+    <%= link_to 'Popular posts', posts_path(sort: 'popular'), :class => 'btn btn-primary post' %>
     <%= link_to 'New Post', (new_post_path if current_user), :class => 'btn btn-primary post' %>
   <% @posts.each do |post| %>
     <div class="blog-post">
-      <h2 class="blog-post-title"><%= post.title %></h2>
+      <h2 class="blog-post-title"><%= link_to post.title, post %></h2>
       <p class ="blog-post-meta">
           <%= image_tag avatar_url(post.user), height: '64', width: '64' %> <%= post.user.name %>
       </p>
       <p><%= post.body %></p>
       <p class="label label-tags"><%= post.tags %></p>
+      <div class="rates"><%= get_likes(post, 1) %> Likes <%= get_likes(post, -1) %> Dislikes</div>
 
       <%= link_to 'Show', post, :class => 'btn btn-primary' %>
       <% if post.user.eql?(current_user) %>
