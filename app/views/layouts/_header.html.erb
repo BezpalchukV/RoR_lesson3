@@ -6,7 +6,9 @@
     <li role="presentation"><%= link_to 'Login', sessions_login_path unless current_user %></li>
     <li role="presentation"><%= link_to 'Logout', sessions_logout_path if current_user %></li>
     <% if current_user %>
-        <li class="navbar-text navbar-right">Welcome: <%= current_user.name %></li>
+        <li class="navbar-text navbar-right">Welcome: <%= current_user.name %>
+          <div><%= image_tag avatar_url(current_user), class: 'avatar' %></div>
+        </li>
     <% end %>
   </ul>
 </nav>
