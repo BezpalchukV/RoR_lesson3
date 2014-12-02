@@ -1,14 +1,14 @@
-<body>
 <div class="container">
 <div class="blog-header">
+<p id="notice" role="alert"><%= notice %></p>
 <h1 class="blog-title">Listing posts</h1>
 </div>
 
 <div class="row">
   <div class="col-sm-8 blog-main">
-    <%= link_to 'Active posts', posts_path(sort: 'active'), :class => 'btn btn-primary post' %>
-    <%= link_to 'Popular posts', posts_path(sort: 'popular'), :class => 'btn btn-primary post' %>
-    <%= link_to 'New Post', (new_post_path if current_user), :class => 'btn btn-primary post' %>
+    <%= link_to 'Active posts', posts_path(sort: 'active'), class: 'btn btn-primary post' %>
+    <%= link_to 'Popular posts', posts_path(sort: 'popular'), class: 'btn btn-primary post' %>
+    <%= link_to 'New Post', (new_post_path if current_user), class: 'btn btn-primary post' %>
   <% @posts.each do |post| %>
     <div class="blog-post">
       <h2 class="blog-post-title"><%= link_to post.title, post %></h2>
@@ -21,10 +21,11 @@
 
       <%= link_to 'Show', post, :class => 'btn btn-primary' %>
       <% if post.user.eql?(current_user) %>
-        <%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-primary' %>
-        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-primary' %>
+        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
       <% end %>
     </div>
+    <hr>
   <% end %>
 </div>
 
@@ -32,4 +33,3 @@
 </div>
 
 </div>
-</body>

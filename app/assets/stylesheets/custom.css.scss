@@ -1,7 +1,6 @@
 @import "bootstrap";
 
 body {
-  padding-top: 40px;
   padding-bottom: 40px;
   background-color: #eee;
 }
@@ -66,13 +65,16 @@ h1, .h1 {
   background-color: #DDDBDB;
 }
 .blog-title {
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 0;
   font-size: 60px;
   font-weight: normal;
 }
 .row {
-  margin-left: 50px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  margin-right: 80px;
+  margin-left: 100px;
 }
 .blog-post-title {
   margin-bottom: 5px;
@@ -105,7 +107,7 @@ h1, .h1 {
   text-align: center;
 }
 textarea.form-control {
-  height: 140px;
+  height: 100px;
 }
 
 .avatar {
@@ -126,4 +128,15 @@ textarea.form-control {
 
 .pull-left {
   margin-right: 15px;
+}
+.float {
+  display: inline-block;
+}
+
+.col-sm-8 {
+  width: 71%;
+}
+
+.controls {
+  margin-left: 25%;
 }
