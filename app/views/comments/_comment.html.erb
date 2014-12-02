@@ -12,6 +12,11 @@
           <br/>
           <%= comment.body %>
         </p>
+        <% if (comment.user == current_user) %>
+            <%= link_to 'Destroy', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
     <% end %>
+
+
   </div>
 </div>

@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    redirect_to :back unless current_user || controller_name == 'sessions'
+    unless current_user || controller_name == 'sessions'
+      flash[:notice] = 'Please login first'
+      redirect_to :back
+    end
+
   end
 
   def cookies_counter

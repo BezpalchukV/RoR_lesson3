@@ -1,0 +1,3 @@
+$('#notice').replaceWith('<p id="notice" role="alert"><%= @message %></p>');
+$('#likes').replaceWith(<%= get_likes(@post, 1) %>);
+$('#dislikes').replaceWith(<%= get_likes(@post, -1) %>);

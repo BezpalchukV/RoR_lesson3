@@ -1,18 +1,16 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-8 blog-main">
+  <p id="notice" role="alert"><% notice %></p>
   <div>
     <%= image_tag avatar_url(@post.user), height: '64', width: '64' %>
   </div>
   <div class="blog-post">
-    <p id="notice" role="alert"><%= notice %></p>
     <p>
-      <strong>Title:</strong>
       <h2 class="blog-post-title"><%= @post.title %></h2>
     </p>
 
     <p>
-      <strong>Body:</strong><br>
       <%= @post.body %>
     </p>
 
@@ -21,11 +19,11 @@
       <%= @post.tags %>
     </p>
 
-    <p>
-      <%= get_likes(@post, 1) %>
-      <%= link_to "Like", vote_post_path(value: 'like'), method: :put, class: 'btn btn-success rate' %>
-      <%= link_to "Dislike", vote_post_path(vlaue: 'dislike'), method: :put, class: 'btn btn-danger rate' %>
-      <%= get_likes(@post, -1) %>
+    <p id = "votes">
+      <div id="likes" class ="float"><%= get_likes(@post, 1) %></div>
+      <%= link_to "Like", vote_post_path(value: 'like'), remote: true, method: :put, class: 'btn btn-success rate' %>
+      <%= link_to "Dislike", vote_post_path(value: 'dislike'), remote: true, method: :put, class: 'btn btn-danger rate' %>
+      <div id="dislikes" class ="float"><%= get_likes(@post, -1) %></div>
     </p>
 
     <p class="blog-post-meta">
@@ -33,14 +31,14 @@
     </p>
   </div>
   <% if @post.user.eql?(current_user) %>
-    <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-default btn-sm' %>
+    <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-default btn-sm' %>
   <% end %>
-  <%= link_to 'Back', posts_path, :class => 'btn btn-default btn-sm' %>
+  <%= link_to 'Back', posts_path, class: 'btn btn-default btn-sm' %>
   <br><br><br>
 
   <div clas="well">
       <% if current_user %>
-          <%= form_for [@post, Comment.new], :html => {:role=> 'form'} do |f| %>
+          <%= form_for [@post, Comment.new], remote: true, :html => {:role=> 'form'} do |f| %>
               <p>
                 <%= f.label :body, "New comment" %><br/>
                 <div class="form-group">
@@ -54,8 +52,9 @@
   <hr>
   <h3>Comments:</h3>
 
-  <%= render :partial => @post.comments %>
-
+  <div class="comments">
+    <%= render partial: @post.comments %>
+  </div>
 
 </div>
 </div>
