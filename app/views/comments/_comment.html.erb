@@ -15,6 +15,9 @@
         <% if (comment.user == current_user) %>
             <%= link_to 'Destroy', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
+        <% if current_user %>
+            <%= link_to "Reply", new_post_comment_path(parent_id: comment.id, post_id: @post.id ), remote: true, id: "reply_comment_#{comment.id}"%>
+        <% end %>
     <% end %>
 
 

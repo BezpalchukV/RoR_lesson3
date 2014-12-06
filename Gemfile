@@ -43,4 +43,5 @@ require 'digest/md5'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'annotate'
+gem 'ancestry'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

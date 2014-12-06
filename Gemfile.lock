@@ -27,11 +27,12 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
-    bcrypt (3.1.9)
     bcrypt (3.1.9-x86-mingw32)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
@@ -59,7 +60,6 @@ GEM
     mime-types (2.4.3)
     minitest (5.4.2)
     multi_json (1.10.1)
-    pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -126,6 +126,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  ancestry
   annotate
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.1.1.1)

@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-8 blog-main">
-  <p id="notice" role="alert"><% notice %></p>
+  <p id="notice" role="alert"><%= notice %></p>
   <div>
     <%= image_tag avatar_url(@post.user), height: '64', width: '64' %>
   </div>
@@ -39,6 +39,7 @@
   <div clas="well">
       <% if current_user %>
           <%= form_for [@post, Comment.new], remote: true, :html => {:role=> 'form'} do |f| %>
+              <%= f.hidden_field :parent_id %>
               <p>
                 <%= f.label :body, "New comment" %><br/>
                 <div class="form-group">
@@ -53,7 +54,7 @@
   <h3>Comments:</h3>
 
   <div class="comments">
-    <%= render partial: @post.comments %>
+    <%= nested_comments @post.comments.arrange %>
   </div>
 
 </div>
