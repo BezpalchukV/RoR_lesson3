@@ -15,6 +15,7 @@
     <%= link_to 'Active posts', posts_path(sort: 'active'), class: 'btn btn-primary post' %>
     <%= link_to 'Popular posts', posts_path(sort: 'popular'), class: 'btn btn-primary post' %>
     <%= link_to 'New Post', (new_post_path if current_user), class: 'btn btn-primary post' %>
+    <%= link_to 'Favorite posts', (favorite_posts_path if current_user), class: 'btn btn-info post' %>
   <% @posts.each do |post| %>
     <div class="blog-post">
       <h2 class="blog-post-title"><%= link_to post.title, post %></h2>

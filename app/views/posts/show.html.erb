@@ -24,6 +24,15 @@
       <%= link_to "Like", vote_post_path(value: 'like'), remote: true, method: :put, class: 'btn btn-success rate' %>
       <%= link_to "Dislike", vote_post_path(value: 'dislike'), remote: true, method: :put, class: 'btn btn-danger rate' %>
       <div id="dislikes" class ="float"><%= get_likes(@post, -1) %></div>
+
+    <p class="float favorites_link">
+      <% if current_user %>
+        <%- unless current_user.favorite_posts.exists?(id: @post.id) -%>
+            <%= link_to 'Add to favorites', favorite_posts_path(id: @post), method: :post,  class: 'btn btn-success rate' %>
+        <%- else -%>
+            <%= link_to 'Remove from favorites', favorite_post_path(@post), method: :delete, class: 'btn btn-danger rate' %>
+        <%- end -%>
+      <% end %>
     </p>
 
     <p class="blog-post-meta">

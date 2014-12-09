@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :favorite_posts, only: [:create, :destroy, :index]
+
   get 'registration' => 'users#new', as: 'registration'
   post 'users' => 'users#create'
   # You can have the root of your site routed with "root"
