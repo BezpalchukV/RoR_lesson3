@@ -4,6 +4,12 @@
 <h1 class="blog-title">Listing posts</h1>
 </div>
 
+ <div class="cal">
+   <%= month_calendar table: {class: "calendar"}, td: {class: "day"} do |date| %>
+       <%= date.day %>
+   <% end %>
+ </div>
+
 <div class="row">
   <div class="col-sm-8 blog-main">
     <%= link_to 'Active posts', posts_path(sort: 'active'), class: 'btn btn-primary post' %>

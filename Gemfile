@@ -40,6 +40,7 @@ require 'digest/md5'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'simple_calendar'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'annotate'
